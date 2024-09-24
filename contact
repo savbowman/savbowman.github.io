@@ -1,0 +1,35 @@
+import React, { useState, useEffect } from 'react';
+
+const ContactPage = () => {
+    const [contacts, setContacts] = useState([]);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+    });
+    const [isEditing, setIsEditing] = useState(false);
+    const [editingContactId, setEditingContactId] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    // Simulate fetching contacts from an API
+    useEffect(() => {
+        const fetchContacts = async () => {
+            // Simulating an API response
+            const response = [
+                { id: 1, name: 'John Doe', email: 'john@example.com', phone: '555-5555', address: '123 Main St' },
+                { id: 2, name: 'Jane Smith', email: 'jane@example.com', phone: '555-1234', address: '456 Oak St' }
+            ];
+            setContacts(response);
+        };
+        fetchContacts();
+    }, []);
+
+    // Handle form input changes
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    // Handle add new contact
+   
